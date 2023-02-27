@@ -5,7 +5,7 @@ const randomness_generator = {
   log: () => console.log(new Date(), randomness_generator.random),
   log_each_five_sec: () => {
     randomness_generator.log();
-    new Promise(() => setTimeout(() => randomness_generator.log_each_five_sec(), 5000));
+    setTimeout(randomness_generator.log_each_five_sec, 5000);
   }
 }
 
