@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-dep
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: crudproject
+  template:
+    metadata:
+      labels:
+        app: crudproject
+    spec:
+      containers:
+        - name: crudproject
+          image: jb1r/project:v01
