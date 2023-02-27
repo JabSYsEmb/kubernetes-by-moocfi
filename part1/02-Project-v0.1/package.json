@@ -1,0 +1,15 @@
+{
+  "name": "crud-project-v01",
+  "version": "0.1.0",
+  "description": "Simple CRUD project running inside kubernetes cluster",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cabbar Serif",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "fastify": "^4.13.0"
+  }
+}
