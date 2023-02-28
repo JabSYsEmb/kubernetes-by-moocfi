@@ -9,6 +9,8 @@
   "author": "Cabbar Serif",
   "license": "MIT",
   "dependencies": {
+    "@fastify/cors": "^8.2.0",
+    "@fastify/static": "^6.9.0",
     "dotenv": "^16.0.3",
     "fastify": "^4.13.0"
   }

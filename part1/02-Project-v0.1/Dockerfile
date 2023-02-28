@@ -2,10 +2,12 @@ FROM node:alpine
 
 WORKDIR /home/app
 
-COPY ./package*.json .
+COPY ./package* .
 
 RUN npm install
 
+COPY ./public ./public/
+
 COPY ./index.js .
 
-CMD ["node", "index.js"]
+ENTRYPOINT ["node", "index.js"]
