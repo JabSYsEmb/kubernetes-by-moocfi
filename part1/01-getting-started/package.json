@@ -1,0 +1,16 @@
+{
+  "name": "01-getting-started",
+  "version": "1.0.0",
+  "description": "``` $ docker build . -t getting-started ```",
+  "main": "node.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^8.2.0",
+    "fastify": "^4.13.0"
+  }
+}
