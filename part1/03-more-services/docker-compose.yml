@@ -10,10 +10,10 @@ services:
     container_name: redis
 
   backend:
+    image: festapi-project
     build:
       context: ./backend
       dockerfile: ./Dockerfile
-    image: py-backend
     volumes:
       - "tmp:/home/project/app/__pycache__"
       - "./backend/app:/home/project/app"
