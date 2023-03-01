@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:6-alpine
+    ports:
+      - 6379
+    networks:
+      - local
+    container_name: redis
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile
+    image: py-backend
+    volumes:
+      - "tmp:/home/project/app/__pycache__"
+      - "./backend/app:/home/project/app"
+    env_file:
+      - "./backend/.env"
+    ports:
+      - "82:9999"
+    networks:
+      - local
+    depends_on:
+      - redis
+    container_name: backend
+
+volumes:
+  tmp: {}
+
+networks:
+  local:
