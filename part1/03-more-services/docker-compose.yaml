@@ -1,4 +1,5 @@
-version: '3'
+---
+version: "3"
 
 services:
   redis:
@@ -12,8 +13,8 @@ services:
   backend:
     image: festapi-project
     build:
-      context: ./backend
-      dockerfile: ./Dockerfile
+      context: "./backend"
+      dockerfile: "./Dockerfile"
     volumes:
       - "tmp:/home/project/app/__pycache__"
       - "./backend/app:/home/project/app"
@@ -28,7 +29,7 @@ services:
     container_name: backend
 
 volumes:
-  tmp: {}
-
+  tmp:
 networks:
-  local:
+  local: null
+...
