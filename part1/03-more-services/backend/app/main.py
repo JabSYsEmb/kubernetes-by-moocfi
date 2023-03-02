@@ -1,13 +1,6 @@
-import os
-from aiocache import Cache
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
-
-cache = Cache(Cache.REDIS,
-            endpoint=os.environ['REDIS_HOST'],
-            port=os.environ['REDIS_PORT'],
-            namespace=os.environ['REDIS_NAMESPACE'])
 
 app = FastAPI()
 
@@ -22,20 +15,20 @@ app.add_middleware(
 
 class Counter():
     def __init__(self):
-        pass
-    async def get_count(self) -> int:
-        return await cache.get("count", default=0)
-    async def set_count(self, value: int) -> None:
-        await cache.set("count", value)
-    async def increment_count(self, n: int = 1) -> None:
-        await cache.increment("count", n)
+        self.counter = 0;
+    def get_count(self) -> int:
+        return self.counter;
+    def set_count(self, val: int) -> None:
+        self.counter = val;
+    def increment_count(self, increase_by: int = 1) -> None:
+        self.counter += increase_by;
 
 counter = Counter()
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    count = await counter.get_count()
-    await counter.increment_count()
+    temp = counter.get_count()
+    counter.increment_count()
     return """
         <html>
             <body>
@@ -44,4 +37,4 @@ async def root():
                 </h1>
             </body>
         </html>
-    """.format(count)
+    """.format(temp)
