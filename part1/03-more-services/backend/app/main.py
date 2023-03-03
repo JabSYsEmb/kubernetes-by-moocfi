@@ -38,3 +38,17 @@ async def root():
             </body>
         </html>
     """.format(temp)
+
+@app.get("/pingpong", response_class=HTMLResponse)
+async def get_pingpong():
+    temp = counter.get_count()
+    counter.increment_count()
+    return """
+        <html>
+            <body>
+                <h1>
+                    you are routed to '/pingpong' instead of '/'
+                </h1>
+            </body>
+        </html>
+    """.format(temp)
